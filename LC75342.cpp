@@ -21,8 +21,8 @@ void LC75342::addr(){
        digitalWrite(CL,LOW);
        digitalWrite(DI, (addr >> i) & 0x01);
        digitalWrite(CL,HIGH);
-       digitalWrite(CE,HIGH); 
        }  
+       digitalWrite(CE,HIGH); 
 }
 
 void LC75342::set_input(byte in){
