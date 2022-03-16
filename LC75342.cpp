@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "LC75341.h"
+#include "LC75342.h"
 
-LC75341::LC75341(uint8_t ce, uint8_t di, uint8_t cl){
+LC75342::LC75342(uint8_t ce, uint8_t di, uint8_t cl){
 	CE = ce;
         DI = di;
         CL = cl;
@@ -13,7 +13,7 @@ LC75341::LC75341(uint8_t ce, uint8_t di, uint8_t cl){
         digitalWrite(DI,LOW);
 }
 
-void LC75341::addr(){
+void LC75342::addr(){
        digitalWrite(CL,LOW);
        digitalWrite(CE,LOW);
        byte addr = 0b01000001; // 0x82
@@ -25,7 +25,7 @@ void LC75341::addr(){
        digitalWrite(CE,HIGH); 
 }
 
-void LC75341::set_input(byte in){
+void LC75342::set_input(byte in){
     for(int i = 0; i <= 3; i++){
        digitalWrite(CL,LOW);
     switch(i){
@@ -38,7 +38,7 @@ void LC75341::set_input(byte in){
        }
 }
 
-void LC75341::set_gain(byte gain){
+void LC75342::set_gain(byte gain){
     for(int i = 0; i <= 3; i++){
        digitalWrite(CL,LOW);
     switch(i){
@@ -51,7 +51,7 @@ void LC75341::set_gain(byte gain){
        }
 }
 
-void LC75341::set_volume(byte vol){
+void LC75342::set_volume(byte vol){
     for(int i = 0; i <= 7; i++){
        digitalWrite(CL,LOW);
     switch(i){
@@ -68,7 +68,7 @@ void LC75341::set_volume(byte vol){
        }
 }
 
-void LC75341::set_treble(int treb){
+void LC75342::set_treble(int treb){
       switch(treb){
         case 5:  treb = 0b1010;break;//10dB
         case 4:  treb = 0b0010;break;//8dB
@@ -89,7 +89,7 @@ void LC75341::set_treble(int treb){
         }
 }
 
-void LC75341::set_bass(int bass){
+void LC75342::set_bass(int bass){
       switch(bass){
         case 10:  bass = 0b010100;break;//20dB
         case 9 :  bass = 0b100100;break;//18dB
@@ -120,7 +120,7 @@ void LC75341::set_bass(int bass){
         }
 }
 
-void LC75341::set_ch(byte ch){
+void LC75342::set_ch(byte ch){
       switch(ch){
         case 1: ch = 0b01;break;
         case 2: ch = 0b10;break;
@@ -133,7 +133,7 @@ void LC75341::set_ch(byte ch){
         }
 }
 
-void LC75341::test(){
+void LC75342::test(){
       byte test = 0;
       for(int i = 3; i >= 0; i--){
         digitalWrite(CL,LOW);
